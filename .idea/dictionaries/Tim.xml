@@ -2,7 +2,9 @@
   <dictionary name="Tim">
     <words>
       <w>asctime</w>
+      <w>keylogger</w>
       <w>mins</w>
+      <w>pynput</w>
       <w>seymore</w>
       <w>yyyy</w>
     </words>
