@@ -17,7 +17,7 @@
 * The application will work as-is, however you may **customize the path** to which the log is saved
 * To change the path:
   * open *path.txt* and change the string to represent the new path
-  * the new path must have *log.txt* (or whatever you choose for a file name) present in order for the system to run properly
+  * the new path must have the file *log.txt* (or whatever you choose for a file name) present in order for the system to run properly
 
 ---
 
