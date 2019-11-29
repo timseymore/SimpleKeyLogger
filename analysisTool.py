@@ -10,7 +10,7 @@ Created on Sun Oct 13 13:04:20 2019
 
 class Date:
     """
-    A date in a log file entry
+    A date in a log file entry with a year, month, and day
     """
     def __init__(self, year: int, month: int, day: int):
         self._year = year
@@ -56,16 +56,16 @@ class Time:
         self._sec = sec
         self._ms = ms
 
-    def get_hr(self):
+    def get_hr(self) -> int:
         return self._hr
 
-    def get_mins(self):
+    def get_mins(self) -> int:
         return self._mins
 
-    def get_sec(self):
+    def get_sec(self) -> int:
         return self._sec
 
-    def get_ms(self):
+    def get_ms(self) -> int:
         return self._ms
 
     def __str__(self):
@@ -114,8 +114,7 @@ class Entry:
         self._date = date
         self._time = time
         self._key = key
-    
-    # getters
+
     def get_date(self) -> Date:
         return self._date
 
@@ -125,7 +124,6 @@ class Entry:
     def get_key(self) -> str:
         return self._key
 
-    # magic methods
     def __str__(self) -> str:
         return str(self._date) + " " + str(self._time) + ": " + self._key
 
@@ -213,7 +211,7 @@ class AnalysisTool:
 
     def search_entries(self):
         """
-        EFFECTS: searches entries for given data and prints result
+        EFFECTS: displays the search options menu and handles choice
         """
         print("       Search Options")
         print("===============================")
@@ -226,6 +224,10 @@ class AnalysisTool:
             self.search_by_date()
 
     def search_by_pattern(self):
+        """
+        EFFECTS: takes user input and searches entry list for given pattern
+                 prints log entry for each complete pattern found and total number of times found
+        """
         index = 0
         times_found = 0
         print("Pattern to search for:")
@@ -246,6 +248,9 @@ class AnalysisTool:
 
     # TODO: add time filter option
     def search_by_date(self):
+        """
+        EFFECTS: prints each log entry found on given date in chronological order
+        """
         print("Dates in entry list:")
         self.print_dates()
         print()
@@ -370,12 +375,10 @@ def is_char(key: str) -> bool:
     return not (is_digit(key) or is_special(key) or is_symbol(key))
 
 
-def check_for_pattern(pattern, entries):
+def check_for_pattern(pattern: str, entries: list):
     """
-    Check each char in pattern against each entry in list
-    :param pattern: string to check for
-    :param entries: list of entries to check for pattern
-    :return: True if complete pattern is found starting at beginning of entries list
+    EFFECTS: checks each char in pattern against each entry in entries
+             returns true if complete pattern is found starting at beginning of entries list
     """
     index = 0
     for char in pattern:
