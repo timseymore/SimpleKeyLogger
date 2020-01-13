@@ -94,7 +94,7 @@ class Time:
         return self._hr > other.get_hr() or (self._hr == other.get_hr() and self._mins > other.get_mins()) or \
                 (self._hr == other.get_hr() and self._mins == other.get_mins() and self._sec > other.get_sec()) or \
                 (self._hr == other.get_hr() and self._mins == other.get_mins() and self._sec == other.get_sec() and
-                 self._ms > other.get_ms)
+                 self._ms > other.get_ms())
 
     def __ge__(self, other):
         return self.__eq__(other) or self.__gt__(other)
@@ -249,17 +249,23 @@ class AnalysisTool:
     # TODO: add time filter option
     def search_by_date(self):
         """
-        EFFECTS: prints each log entry found on given date in chronological order
+        EFFECTS: prints each log entry found in given date and time range in chronological order
         """
         print("Dates in entry list:")
         self.print_dates()
         print()
+
         print("Type the date to start: (yyyy-mm-dd)")
         start_date_str = input()
         start_date = make_date(start_date_str)
         if not is_in(start_date, self.get_dates()):
             print("ERROR: start date not in entry list")
             return
+
+        print("Type time to start: (hh:mm:ss,mms)")
+        start_time_str = input()
+        start_time = make_time(start_time_str)
+        
         print("Type the date to stop: (yyyy-mm-dd)")
         stop_date_str = input()
         stop_date = make_date(stop_date_str)
@@ -269,9 +275,17 @@ class AnalysisTool:
         if stop_date < start_date:
             print("ERROR: stop date falls before start date")
             return
+
+        print("Type time to stop: (hh:mm:ss,mms)")
+        stop_time_str = input()
+        stop_time = make_time(stop_time_str)
+        if stop_date == start_date and stop_time < start_time:
+            print("ERROR: stop time falls before start time")
+            return        
+
         print()
         for entry in self.entries:
-            if stop_date >= entry.get_date() >= start_date:
+            if stop_date >= entry.get_date() >= start_date and stop_time >= entry.get_time() >= start_time:
                 print(entry)
 
     def print_keys(self):
