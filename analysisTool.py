@@ -193,7 +193,7 @@ class AnalysisTool:
                 for line in f:
                     self.entries.append(make_entry(line))
         except FileNotFoundError:
-            print(FileNotFoundError)
+            print("ERROR: FileNotFound")
         if len(self.entries) == 0:
             print("Error: no entries added to list")
             print("Verify correct file path and log file for contents")
@@ -202,12 +202,14 @@ class AnalysisTool:
 
     def view_log(self):
         """
-        REQUIRES: log file exists
         EFFECTS: prints full log file
         """
-        with open(self.log_path, 'r') as f:
-            print("Printing full log...\n")
-            print(f.read())
+        try:
+            with open(self.log_path, 'r') as f:
+                print("Printing full log...\n")
+                print(f.read())
+        except FileNotFoundError:
+            print("ERROR: FileNotFound")
 
     def search_entries(self):
         """
