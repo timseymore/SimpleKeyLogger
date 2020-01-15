@@ -251,22 +251,19 @@ class AnalysisTool:
 
     def search_by_date(self):
         """
-        EFFECTS: prints each log entry found in given date range, with a start time for the first date and end time for last date
+        EFFECTS: prints each log entry found in given date range
         """
         print("Dates in entry list:")
         self.print_dates()
         print()
-        # Get user input for start date/time
+        # Get user input for start date
         print("Type the date to start: (yyyy-mm-dd)")
         start_date_str = input()
         start_date = make_date(start_date_str)
         if not is_in(start_date, self.get_dates()):
             print("ERROR: start date not in entry list")
-            return
-        print("Type time to start: (hh:mm:ss,mms)")
-        # start_time_str = input()
-        start_time = make_time(input())  
-        # Get user input for stop date/time      
+            return 
+        # Get user input for stop date     
         print("Type the date to stop: (yyyy-mm-dd)")
         stop_date_str = input()
         stop_date = make_date(stop_date_str)
@@ -276,26 +273,10 @@ class AnalysisTool:
         if stop_date < start_date:
             print("ERROR: stop date falls before start date")
             return
-        print("Type time to stop: (hh:mm:ss,mms)")
-        stop_time_str = input()
-        stop_time = make_time(stop_time_str)
-        if stop_date == start_date and stop_time < start_time:
-            print("ERROR: stop time falls before start time")
-            return
         print()
         # Print selected entries 
         for entry in self.entries:
-            if entry.get_date() == stop_date and start_date == stop_date and stop_time >= entry.get_time() >= start_time:
-                print("in one only")
-                print(entry)
-            elif entry.get_date() == start_date and entry.get_time() >= start_time:
-                print("in start")
-                print(entry)
-            elif stop_date > entry.get_date() > start_date:       
-                print("in middle")         
-                print(entry)
-            elif entry.get_date() == stop_date and entry.get_time() <= stop_time:
-                print("in stop")
+            if stop_date >= entry.get_date() >= start_date:
                 print(entry)
 
     def search_dates_by_time_range(self):
