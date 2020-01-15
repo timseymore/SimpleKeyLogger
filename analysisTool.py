@@ -147,10 +147,12 @@ class AnalysisTool:
         EFFECTS: runs the analysis tool ui
         """
         running = True
+        print()
         print("Simple Key Logger - Analysis Tool")
         print("=================================\n")
         self.build_entry_list()
         while running:
+            print()
             print("               Options")
             print("====================================\n")
             print("To view complete log file type 'l'")
@@ -160,7 +162,8 @@ class AnalysisTool:
             print("To build new entry list type 'b'")
             print("To check file path type 'p'")
             print("To quit type 'q'")
-            option = input()
+            print()
+            option = input('>>> ')
             print()
             if option == 'q':
                 running = False
@@ -220,7 +223,7 @@ class AnalysisTool:
         print("To search by pattern type 'p'")
         print("To search by dates type 'd'")
         print("To search dates by time of day type 't'")
-        choice = input()
+        choice = input('>>> ')
         if choice == 'p':
             self.search_by_pattern()
         elif choice == 'd':
@@ -236,7 +239,7 @@ class AnalysisTool:
         index = 0
         times_found = 0
         print("Pattern to search for:")
-        pattern = input()
+        pattern = input('>>> ')
         if len(pattern) != 0:
             for entry in self.entries:
                 if entry.get_key()[1] == pattern[0]:
@@ -260,14 +263,14 @@ class AnalysisTool:
         print()
         # Get user input for start date
         print("Type the date to start: (yyyy-mm-dd)")
-        start_date_str = input()
+        start_date_str = input('>>> ')
         start_date = make_date(start_date_str)
         if not is_in(start_date, self.get_dates()):
             print("ERROR: start date not in entry list")
             return 
         # Get user input for stop date     
         print("Type the date to stop: (yyyy-mm-dd)")
-        stop_date_str = input()
+        stop_date_str = input('>>> ')
         stop_date = make_date(stop_date_str)
         if not is_in(stop_date, self.get_dates()):
             print("ERROR: stop date not in entry list")
@@ -290,12 +293,12 @@ class AnalysisTool:
         print()
         # Get user input for start and stop date
         print("Type the date to start: (yyyy-mm-dd)")
-        start_date = make_date(input())
+        start_date = make_date(input('>>> '))
         if not is_in(start_date, self.get_dates()):
             print("ERROR: start date not in entry list")
             return
         print("Type the date to stop: (yyyy-mm-dd)")
-        stop_date = make_date(input())
+        stop_date = make_date(input('>>> '))
         if not is_in(stop_date, self.get_dates()):
             print("ERROR: stop date not in entry list")
             return
@@ -304,9 +307,9 @@ class AnalysisTool:
             return
         # Get user input for start and stop time 
         print("Type time to start: (hh:mm:ss,mms)")
-        start_time = make_time(input())
+        start_time = make_time(input('>>> '))
         print("Type time to stop: (hh:mm:ss,mms)")
-        stop_time = make_time(input())
+        stop_time = make_time(input('>>> '))
         if stop_date == start_date and stop_time < start_time:
             print("ERROR: stop time falls before start time")
             return
