@@ -103,7 +103,7 @@ class Time:
         return not self.__ge__(other)
 
     def __le__(self, other):
-        return self.__le__(other) or self.__eq__(other)
+        return self.__lt__(other) or self.__eq__(other)
 
 
 class Entry:
@@ -217,11 +217,14 @@ class AnalysisTool:
         print("===============================")
         print("To search by pattern type 'p'")
         print("To search by dates type 'd'")
+        print("To search dates by time of day type 't'")
         choice = input()
         if choice == 'p':
             self.search_by_pattern()
         elif choice == 'd':
             self.search_by_date()
+        elif choice == 't':
+            self.search_dates_by_time_range()
 
     def search_by_pattern(self):
         """
@@ -248,22 +251,19 @@ class AnalysisTool:
 
     def search_by_date(self):
         """
-        EFFECTS: prints each log entry found in given date and time range in chronological order
+        EFFECTS: prints each log entry found in given date range
         """
         print("Dates in entry list:")
         self.print_dates()
         print()
-        # Get user input for start date/time
+        # Get user input for start date
         print("Type the date to start: (yyyy-mm-dd)")
         start_date_str = input()
         start_date = make_date(start_date_str)
         if not is_in(start_date, self.get_dates()):
             print("ERROR: start date not in entry list")
-            return
-        print("Type time to start: (hh:mm:ss,mms)")
-        # start_time_str = input()
-        start_time = make_time(input())  
-        # Get user input for stop date/time      
+            return 
+        # Get user input for stop date     
         print("Type the date to stop: (yyyy-mm-dd)")
         stop_date_str = input()
         stop_date = make_date(stop_date_str)
@@ -273,14 +273,43 @@ class AnalysisTool:
         if stop_date < start_date:
             print("ERROR: stop date falls before start date")
             return
+        print()
+        # Print selected entries 
+        for entry in self.entries:
+            if stop_date >= entry.get_date() >= start_date:
+                print(entry)
+
+    def search_dates_by_time_range(self):
+        """
+        EFFECTS: prints each log entry found in given date range and time range
+        """
+        print("Dates in entry list:")
+        self.print_dates()
+        print()
+        # Get user input for start and stop date
+        print("Type the date to start: (yyyy-mm-dd)")
+        start_date = make_date(input())
+        if not is_in(start_date, self.get_dates()):
+            print("ERROR: start date not in entry list")
+            return
+        print("Type the date to stop: (yyyy-mm-dd)")
+        stop_date = make_date(input())
+        if not is_in(stop_date, self.get_dates()):
+            print("ERROR: stop date not in entry list")
+            return
+        if stop_date < start_date:
+            print("ERROR: stop date falls before start date")
+            return
+        # Get user input for start and stop time 
+        print("Type time to start: (hh:mm:ss,mms)")
+        start_time = make_time(input())
         print("Type time to stop: (hh:mm:ss,mms)")
-        stop_time_str = input()
-        stop_time = make_time(stop_time_str)
+        stop_time = make_time(input())
         if stop_date == start_date and stop_time < start_time:
             print("ERROR: stop time falls before start time")
             return
         print()
-        # Print selected entries 
+        # Print selected entries to console
         for entry in self.entries:
             if stop_date >= entry.get_date() >= start_date and stop_time >= entry.get_time() >= start_time:
                 print(entry)
