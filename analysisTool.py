@@ -146,36 +146,36 @@ class AnalysisTool:
         """
         EFFECTS: runs the analysis tool ui
         """
-        running = True
+
         print()
         print("Simple Key Logger - Analysis Tool")
         print("=================================\n")
         self.build_entry_list()
-        while running:
+        while True:
             print()
             print("               Options")
             print("====================================\n")
-            print("To view complete log file type 'l'")
-            print("For keystrokes only view type 'k'")
-            print("To view the dates saved in log file type 'd'")
-            print("To search entry list type 's'")
-            print("To build new entry list type 'b'")
-            print("To check file path type 'p'")
-            print("To quit type 'q'")
-            option = get_input()
-            if option == 'q':
-                running = False
-            elif option == 'p':
+            print("To view complete log file type 'log'")
+            print("For keystrokes only view type 'keys'")
+            print("To view the dates saved in log file type 'dates'")
+            print("To search entry list type 'search'")
+            print("To build new entry list type 'build'")
+            print("To check file path type 'path'")
+            print("To quit type 'quit'")
+            option = get_input().casefold()
+            if option == 'quit':
+                break
+            elif option == 'path':
                 print(self.log_path + "\n")
-            elif option == 'l':
+            elif option == 'log':
                 self.view_log()
-            elif option == 'k':
+            elif option == 'keys':
                 self.print_keys()
-            elif option == 'd':
+            elif option == 'dates':
                 self.print_dates()
-            elif option == 's':
+            elif option == 'search':
                 self.search_entries()
-            elif option == 'b':
+            elif option == 'build':
                 self.build_entry_list()
             print()
         print("exiting program...")

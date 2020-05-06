@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c3525b0-819e-4862-b615-b33027cb99af" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="5c3525b0-819e-4862-b615-b33027cb99af" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/SimpleKeyLogger.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SimpleKeyLogger.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysisTool.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysisTool.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,22 +16,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1SMOy13RqjZzPNf9IyW4luE5CX0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -103,5 +101,27 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1899" height="158" key="GridCell.Tab.0.bottom" timestamp="1588726998206">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="158" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588726998206" />
+    <state width="1899" height="158" key="GridCell.Tab.0.center" timestamp="1588726998206">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="158" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588726998206" />
+    <state width="1899" height="158" key="GridCell.Tab.0.left" timestamp="1588726998206">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="158" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588726998206" />
+    <state width="1899" height="158" key="GridCell.Tab.0.right" timestamp="1588726998206">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="158" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588726998206" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1588725365547">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588725365547" />
   </component>
 </project>
