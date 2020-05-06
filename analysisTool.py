@@ -12,6 +12,7 @@ class Date:
     """
     A date in a log file entry with a year, month, and day
     """
+
     def __init__(self, year: int, month: int, day: int):
         self._year = year
         self._month = month
@@ -30,8 +31,8 @@ class Date:
         return self._year == d.get_year() and self._month == d.get_month() and self._day == d.get_day()
 
     def __gt__(self, d):
-        return (self._year > d.get_year()) or (self._year == d.get_year() and self._month > d.get_month()) or\
-                (self._year == d.get_year() and self._month == d.get_month() and self._day > d.get_day())
+        return (self._year > d.get_year()) or (self._year == d.get_year() and self._month > d.get_month()) or \
+               (self._year == d.get_year() and self._month == d.get_month() and self._day > d.get_day())
 
     def __ge__(self, d):
         return self.__gt__(d) or self.__eq__(d)
@@ -50,6 +51,7 @@ class Time:
     """
     A time in a log file entry with hours, minutes, seconds, and milliseconds
     """
+
     def __init__(self, hr: int, mins: int, sec: int, ms: int):
         self._hr = hr
         self._mins = mins
@@ -92,9 +94,9 @@ class Time:
 
     def __gt__(self, other):
         return self._hr > other.get_hr() or (self._hr == other.get_hr() and self._mins > other.get_mins()) or \
-                (self._hr == other.get_hr() and self._mins == other.get_mins() and self._sec > other.get_sec()) or \
-                (self._hr == other.get_hr() and self._mins == other.get_mins() and self._sec == other.get_sec() and
-                 self._ms > other.get_ms())
+               (self._hr == other.get_hr() and self._mins == other.get_mins() and self._sec > other.get_sec()) or \
+               (self._hr == other.get_hr() and self._mins == other.get_mins() and self._sec == other.get_sec() and
+                self._ms > other.get_ms())
 
     def __ge__(self, other):
         return self.__eq__(other) or self.__gt__(other)
@@ -110,6 +112,7 @@ class Entry:
     """
     An entry in a key log file with a date, time, and key press
     """
+
     def __init__(self, date: Date, time: Time, key: str):
         self._date = date
         self._time = time
@@ -120,7 +123,7 @@ class Entry:
 
     def get_time(self) -> Time:
         return self._time
-    
+
     def get_key(self) -> str:
         return self._key
 
@@ -186,6 +189,7 @@ class AnalysisTool:
         EFFECTS: builds new list of entries from log file,
                 prints error message if no entries added
         """
+
         print("Building new entry list...\n")
         print(str(len(self.entries)) + " entries removed")
         self.entries = []
@@ -196,7 +200,7 @@ class AnalysisTool:
         except FileNotFoundError:
             print("ERROR: FileNotFound")
         if len(self.entries) == 0:
-            print("Error: no entries added to list")
+            print("Error: NoEntriesFound")
             print("Verify correct file path and log file for contents")
         else:
             print(str(len(self.entries)) + " entries added")
@@ -205,6 +209,7 @@ class AnalysisTool:
         """
         EFFECTS: prints full log file
         """
+
         try:
             with open(self.log_path, 'r') as f:
                 print("Printing full log...\n")
@@ -216,6 +221,7 @@ class AnalysisTool:
         """
         EFFECTS: displays the search options menu and handles choice
         """
+
         print("       Search Options")
         print("===============================")
         print("To search by pattern type 'p'")
@@ -234,6 +240,7 @@ class AnalysisTool:
         EFFECTS: takes user input and searches entry list for given pattern
                  prints log entry for each complete pattern found and total number of times found
         """
+
         index = 0
         times_found = 0
         print("Pattern to search for:")
@@ -241,10 +248,10 @@ class AnalysisTool:
         if len(pattern) != 0:
             for entry in self.entries:
                 if entry.get_key()[1] == pattern[0]:
-                    if check_for_pattern(pattern[1:], self.entries[(index+1):]):
+                    if check_for_pattern(pattern[1:], self.entries[(index + 1):]):
                         times_found += 1
                         print("Pattern found on " + str(entry.get_date()) + " at " + str(entry.get_time()) + '\n')
-                        for e in self.entries[index:index+len(pattern)]:
+                        for e in self.entries[index:index + len(pattern)]:
                             print(e)
                 index += 1
             if times_found == 0:
@@ -256,6 +263,7 @@ class AnalysisTool:
         """
         EFFECTS: prints each log entry found in given date range
         """
+
         print("Dates in entry list:")
         self.print_dates()
         print()
@@ -265,8 +273,8 @@ class AnalysisTool:
         start_date = make_date(start_date_str)
         if not is_in(start_date, self.get_dates()):
             print("ERROR: start date not in entry list")
-            return 
-        # Get user input for stop date     
+            return
+            # Get user input for stop date
         print("Type the date to stop: (yyyy-mm-dd)")
         stop_date_str = get_input()
         stop_date = make_date(stop_date_str)
@@ -286,6 +294,7 @@ class AnalysisTool:
         """
         EFFECTS: prints each log entry found in given date range and time range
         """
+
         print("Dates in entry list:")
         self.print_dates()
         print()
@@ -321,6 +330,7 @@ class AnalysisTool:
         """
         EFFECTS: prints key press from each entry in entries list on a separate line
         """
+
         for entry in self.entries:
             print(entry.get_key())
 
@@ -328,6 +338,7 @@ class AnalysisTool:
         """
         EFFECTS: returns list of dates in which there are entries in the list
         """
+
         dates = []
         for entry in self.entries:
             if not is_in(entry.get_date(), dates):
@@ -338,26 +349,30 @@ class AnalysisTool:
         """
         EFFECTS: prints each date that there are entries for on a separate line
         """
+
         for date in self.get_dates():
             print(date)
 
 
 # Helper Functions
-  
+
 def get_input() -> str:
     """
     EFFECTS: Get user input and return that value 
     """
+
     print()
     string = input('>>> ')
     print()
     return string
+
 
 def make_date(d_str: str) -> Date:
     """
     REQUIRES: d_str is in format 'yyyy-mm-dd'
     EFFECTS: returns new Date instance from given date string
     """
+
     year = int(d_str[:4])
     month = int(d_str[5:7])
     day = int(d_str[8:])
@@ -369,6 +384,7 @@ def make_time(t_str: str) -> Time:
     REQUIRES: t_str is in format 'hh:mm:ss,mms'
     EFFECTS: returns Time instance from given t_str
     """
+
     hr = int(t_str[:2])
     mins = int(t_str[3:5])
     sec = int(t_str[6:8])
@@ -381,6 +397,7 @@ def make_entry(line: str) -> Entry:
     REQUIRES: line in file exists and is in format 'yyyy-mm-dd hh:mm:ss,mms: key'
     EFFECTS: returns new Entry instance from given line in log file
     """
+
     date = make_date(line[:10])
     time = make_time(line[11:23])
     key = line[25:]
@@ -391,40 +408,21 @@ def is_in(el, lst: list) -> bool:
     """
     EFFECTS: returns True if an equal element is in list, False otherwise
     """
+
     for entry in lst:
         if entry == el:
             return True
     return False
 
-
-def is_special(key: str) -> bool:
-    """
-    EFFECTS: returns true if key is a special key: space, esc, ect..
-    """
-    return key[0] == 'K'
-
-
-def is_digit(key: str) -> bool:
-    """
-    EFFECTS: returns true if key is digit 0-9, false otherwise
-    """
-    digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    return is_in(key, digits)
-
-
-def is_symbol(key: str) -> bool:
-    """
-    EFFECTS: returns true if key is symbol: . , / ect, false otherwise
-    """
-    symbols = [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=']
-    return is_in(key, symbols)
-
-
-def is_char(key: str) -> bool:
-    """
-    EFFECTS: returns true if key is an alphabetic character, false otherwise
-    """
-    return not (is_digit(key) or is_special(key) or is_symbol(key))
+# Note: not sure why this function exists; after moving all 3 helpers into the function, they now have no uses
+# def is_char(key: str) -> bool:
+#     """
+#     EFFECTS: returns true if key is an alphabetic character, false otherwise
+#     """
+#
+#     return not is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) \
+#         or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=']) \
+#         or key[0] == 'K'
 
 
 def check_for_pattern(pattern: str, entries: list):
