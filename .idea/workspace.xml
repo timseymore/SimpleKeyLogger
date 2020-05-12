@@ -32,7 +32,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test.TestCase">
+  <component name="RunManager" selected="Python tests.Unittests for test.TestHelperFunctions">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SimpleKeyLogger" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,7 +75,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test.MyTestCase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test.TestHelperFunctions" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="SimpleKeyLogger" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -85,28 +85,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.MyTestCase&quot;" />
+      <option name="_new_target" value="&quot;test.TestHelperFunctions&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test.TestCase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="SimpleKeyLogger" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.TestCase&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Python.analysisTool" />
+      <item itemvalue="Python tests.Unittests for test.TestHelperFunctions" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test.TestCase" />
-        <item itemvalue="Python tests.Unittests for test.MyTestCase" />
+        <item itemvalue="Python tests.Unittests for test.TestHelperFunctions" />
         <item itemvalue="Python.analysisTool" />
       </list>
     </recent_temporary>
@@ -138,22 +127,34 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="484" key="GridCell.Tab.0.bottom" timestamp="1589243776401">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589244411309">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="484" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243776401" />
-    <state width="1899" height="484" key="GridCell.Tab.0.center" timestamp="1589243776401">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589244411309" />
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1589244040516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="484" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243776401" />
-    <state width="1899" height="484" key="GridCell.Tab.0.left" timestamp="1589243776401">
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589244040516" />
+    <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589244383515">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="484" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243776401" />
-    <state width="1899" height="484" key="GridCell.Tab.0.right" timestamp="1589243776401">
+    <state x="689" y="303" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589244383515" />
+    <state width="1899" height="205" key="GridCell.Tab.0.bottom" timestamp="1589244314891">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="484" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243776401" />
+    <state width="1899" height="205" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589244314891" />
+    <state width="1899" height="205" key="GridCell.Tab.0.center" timestamp="1589244314891">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="205" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589244314891" />
+    <state width="1899" height="205" key="GridCell.Tab.0.left" timestamp="1589244314891">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="205" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589244314891" />
+    <state width="1899" height="205" key="GridCell.Tab.0.right" timestamp="1589244314891">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="205" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589244314891" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1588725365547">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

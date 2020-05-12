@@ -2,7 +2,7 @@ import unittest
 from analysisTool import *
 
 
-class TestCase(unittest.TestCase):
+class TestHelperFunctions(unittest.TestCase):
 
     def test_make_date(self):
         self.assertEqual(type(make_date("1234-01-02")), type(Date(1234, 1, 2)))
