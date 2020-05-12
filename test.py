@@ -18,11 +18,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(make_time('12:30:59,123').get_ms(), Time(12, 30, 59, 123).get_ms())
 
 
-
-
-
-
-
-
 if __name__ == '__main__':
     unittest.main()
