@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3525b0-819e-4862-b615-b33027cb99af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/testlog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysisTool.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysisTool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/path.txt" beforeDir="false" afterPath="$PROJECT_DIR$/path.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Unit Test" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,7 +34,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Unittests for test.TestCase">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SimpleKeyLogger" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -68,8 +77,38 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for test.MyTestCase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="SimpleKeyLogger" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test.MyTestCase&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test.TestCase" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="SimpleKeyLogger" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test.TestCase&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test.TestCase" />
+        <item itemvalue="Python tests.Unittests for test.MyTestCase" />
         <item itemvalue="Python.analysisTool" />
       </list>
     </recent_temporary>
@@ -101,22 +140,22 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="290" key="GridCell.Tab.0.bottom" timestamp="1588729869882">
+    <state width="1899" height="484" key="GridCell.Tab.0.bottom" timestamp="1589243299215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588729869882" />
-    <state width="1899" height="290" key="GridCell.Tab.0.center" timestamp="1588729869882">
+    <state width="1899" height="484" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243299215" />
+    <state width="1899" height="484" key="GridCell.Tab.0.center" timestamp="1589243299215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588729869882" />
-    <state width="1899" height="290" key="GridCell.Tab.0.left" timestamp="1588729869882">
+    <state width="1899" height="484" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243299215" />
+    <state width="1899" height="484" key="GridCell.Tab.0.left" timestamp="1589243299215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588729869882" />
-    <state width="1899" height="290" key="GridCell.Tab.0.right" timestamp="1588729869882">
+    <state width="1899" height="484" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243299215" />
+    <state width="1899" height="484" key="GridCell.Tab.0.right" timestamp="1589243299215">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588729869882" />
+    <state width="1899" height="484" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589243299215" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1588725365547">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

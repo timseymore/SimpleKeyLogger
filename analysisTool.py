@@ -247,7 +247,7 @@ class AnalysisTool:
         pattern = get_input()
         if len(pattern) != 0:
             for entry in self.entries:
-                if entry.get_key()[1] == pattern[0]:
+                if is_char(entry.get_key()) and entry.get_key()[1] == pattern[0]:
                     if check_for_pattern(pattern[1:], self.entries[(index + 1):]):
                         times_found += 1
                         print("Pattern found on " + str(entry.get_date()) + " at " + str(entry.get_time()) + '\n')
@@ -414,15 +414,15 @@ def is_in(el, lst: list) -> bool:
             return True
     return False
 
-# Note: not sure why this function exists; after moving all 3 helpers into the function, they now have no uses
-# def is_char(key: str) -> bool:
-#     """
-#     EFFECTS: returns true if key is an alphabetic character, false otherwise
-#     """
-#
-#     return not is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) \
-#         or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=']) \
-#         or key[0] == 'K'
+
+def is_char(key: str) -> bool:
+    """
+    EFFECTS: returns true if key is an alphabetic character, false otherwise
+    """
+
+    return not is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) \
+        or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=']) \
+        or key[0] == 'K'
 
 
 def check_for_pattern(pattern: str, entries: list):
