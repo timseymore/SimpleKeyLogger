@@ -30,6 +30,27 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertEqual(call.get_key(), TEST_ENTRY1.get_key())
         self.assertEqual(call.get_time(), TEST_ENTRY1.get_time())
 
+    def test_is_in(self):
+        lst1 = [0, 1, 2, 3, 4]
+        lst2 = ['a', 'b', 'c', 'd']
+        self.assertEqual(is_in(0, lst1), True)
+        self.assertEqual(is_in(4, lst1), True)
+        self.assertEqual(is_in(2, lst1), True)
+        self.assertEqual(is_in(-1, lst1), False)
+        self.assertEqual(is_in(5, lst1), False)
+        self.assertEqual(is_in(11, lst1), False)
+        self.assertEqual(is_in(12, lst1), False)
+        self.assertEqual(is_in('a', lst2), True)
+        self.assertEqual(is_in('d', lst2), True)
+        self.assertEqual(is_in('c', lst2), True)
+        self.assertEqual(is_in('x', lst2), False)
+        self.assertEqual(is_in('aa', lst2), False)
+        self.assertEqual(is_in('ab', lst2), False)
+        self.assertEqual(is_in('a ', lst2), False)
+        self.assertEqual(is_in(' a', lst2), False)
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
