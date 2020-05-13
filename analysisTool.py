@@ -358,7 +358,8 @@ class AnalysisTool:
 
 def get_input() -> str:
     """
-    EFFECTS: Get user input and return that value 
+    EFFECTS: Get user input and return that value
+    NOTE: essentially a decorator for built-in input()
     """
 
     print()

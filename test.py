@@ -1,21 +1,34 @@
 import unittest
 from analysisTool import *
 
+TEST_DATE1 = Date(1234, 1, 2)
+TEST_TIME1 = Time(12, 30, 59, 123)
+TEST_ENTRY1 = Entry(TEST_DATE1, TEST_TIME1, "'a'")
+
 
 class TestHelperFunctions(unittest.TestCase):
 
     def test_make_date(self):
-        self.assertEqual(type(make_date("1234-01-02")), type(Date(1234, 1, 2)))
-        self.assertEqual(make_date("1234-01-02").get_day(), Date(1234, 1, 2).get_day())
-        self.assertEqual(make_date("1234-01-02").get_month(), Date(1234, 1, 2).get_month())
-        self.assertEqual(make_date("1234-01-02").get_year(), Date(1234, 1, 2).get_year())
+        call = make_date("1234-01-02")
+        self.assertEqual(type(call), type(TEST_DATE1))
+        self.assertEqual(call.get_day(), TEST_DATE1.get_day())
+        self.assertEqual(call.get_month(), TEST_DATE1.get_month())
+        self.assertEqual(call.get_year(), TEST_DATE1.get_year())
 
     def test_make_time(self):
-        self.assertEqual(type(make_time('12:30:59,123')), type(Time(12, 30, 59, 123)))
-        self.assertEqual(make_time('12:30:59,123').get_hr(), Time(12, 30, 59, 123).get_hr())
-        self.assertEqual(make_time('12:30:59,123').get_mins(), Time(12, 30, 59, 123).get_mins())
-        self.assertEqual(make_time('12:30:59,123').get_sec(), Time(12, 30, 59, 123).get_sec())
-        self.assertEqual(make_time('12:30:59,123').get_ms(), Time(12, 30, 59, 123).get_ms())
+        call = make_time('12:30:59,123')
+        self.assertEqual(type(call), type(TEST_TIME1))
+        self.assertEqual(call.get_hr(), TEST_TIME1.get_hr())
+        self.assertEqual(call.get_mins(), TEST_TIME1.get_mins())
+        self.assertEqual(call.get_sec(), TEST_TIME1.get_sec())
+        self.assertEqual(call.get_ms(), TEST_TIME1.get_ms())
+
+    def test_make_entry(self):
+        call = make_entry("1234-01-02 12:30:59.123: 'a'")
+        self.assertEqual(type(call), type(TEST_ENTRY1))
+        self.assertEqual(call.get_date(), TEST_ENTRY1.get_date())
+        self.assertEqual(call.get_key(), TEST_ENTRY1.get_key())
+        self.assertEqual(call.get_time(), TEST_ENTRY1.get_time())
 
 
 if __name__ == '__main__':
