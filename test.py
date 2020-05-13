@@ -50,7 +50,5 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertEqual(is_in(' a', lst2), False)
 
 
-
-
 if __name__ == '__main__':
     unittest.main()
