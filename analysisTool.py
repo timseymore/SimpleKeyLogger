@@ -357,11 +357,7 @@ class AnalysisTool:
 # Helper Functions
 
 def get_input() -> str:
-    """
-    EFFECTS: Get user input and return that value
-    NOTE: essentially a decorator for built-in input()
-    """
-
+    """ Get user input and return that value. """
     print()
     string = input('>>> ')
     print()
@@ -369,11 +365,10 @@ def get_input() -> str:
 
 
 def make_date(d_str: str) -> Date:
-    """
-    REQUIRES: d_str is in format 'yyyy-mm-dd'
-    EFFECTS: returns new Date instance from given date string
-    """
+    """ Returns new Date instance from given date string
 
+    REQUIRES: d_str is in format 'yyyy-mm-dd'
+    """
     year = int(d_str[:4])
     month = int(d_str[5:7])
     day = int(d_str[8:])
@@ -381,11 +376,10 @@ def make_date(d_str: str) -> Date:
 
 
 def make_time(t_str: str) -> Time:
-    """
-    REQUIRES: t_str is in format 'hh:mm:ss,mms'
-    EFFECTS: returns Time instance from given t_str
-    """
+    """ Returns Time instance from given t_str.
 
+    REQUIRES: t_str is in format 'hh:mm:ss,mms'
+    """
     hr = int(t_str[:2])
     mins = int(t_str[3:5])
     sec = int(t_str[6:8])
@@ -394,11 +388,10 @@ def make_time(t_str: str) -> Time:
 
 
 def make_entry(line: str) -> Entry:
-    """
-    REQUIRES: line in file exists and is in format 'yyyy-mm-dd hh:mm:ss,mms: key'
-    EFFECTS: returns new Entry instance from given line in log file
-    """
+    """ Returns new Entry instance from given line in log file.
 
+    REQUIRES: line in file exists and is in format 'yyyy-mm-dd hh:mm:ss,mms: key'
+    """
     date = make_date(line[:10])
     time = make_time(line[11:23])
     key = line[25:]
@@ -406,10 +399,7 @@ def make_entry(line: str) -> Entry:
 
 
 def is_in(el, lst: list) -> bool:
-    """
-    EFFECTS: returns True if an equal element is in list, False otherwise
-    """
-
+    """ Returns True if an equal element is in list, False otherwise. """
     for entry in lst:
         if entry == el:
             return True
@@ -417,19 +407,15 @@ def is_in(el, lst: list) -> bool:
 
 
 def is_char(key: str) -> bool:
-    """
-    EFFECTS: returns true if key is an alphabetic character, false otherwise
-    """
-
+    """ Returns true if key is an alphabetic character, false otherwise. """
     return not is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) \
         or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=']) \
         or key[0] == 'K'
 
 
 def check_for_pattern(pattern: str, entries: list) -> bool:
-    """
-    EFFECTS: checks each char in pattern against each entry in entries
-             returns true if complete pattern is found starting at beginning of entries list
+    """ Checks each char in pattern against each entry in entries and
+    returns true if complete pattern is found starting at beginning of entries list.
     """
     index = 0
     for char in pattern:
