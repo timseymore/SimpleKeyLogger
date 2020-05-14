@@ -426,7 +426,7 @@ def is_char(key: str) -> bool:
         or key[0] == 'K'
 
 
-def check_for_pattern(pattern: str, entries: list):
+def check_for_pattern(pattern: str, entries: list) -> bool:
     """
     EFFECTS: checks each char in pattern against each entry in entries
              returns true if complete pattern is found starting at beginning of entries list
