@@ -49,6 +49,12 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertFalse(is_in('a ', lst2))
         self.assertFalse(is_in(' a', lst2))
 
+    def test_is_char(self):
+        self.assertTrue(is_char('a'))
+        self.assertTrue(is_char(TEST_ENTRY1.get_key()))
+        self.assertFalse((is_char('$')))
+
+
 
 if __name__ == '__main__':
     unittest.main()

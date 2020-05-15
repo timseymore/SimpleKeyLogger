@@ -428,9 +428,10 @@ def is_in(el, lst: list) -> bool:
 
 def is_char(key: str) -> bool:
     """ Returns true if key is an alphabetic character, false otherwise. """
-    return not is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) \
-        or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=']) \
-        or key[0] == 'K'
+    return not (is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+                or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=', '$', '#', '@', '!', '^',
+                               '&', '(', ')', '"'])
+                or key[0] == 'K')
 
 
 def check_for_pattern(pattern: str, entries: list) -> bool:
