@@ -53,7 +53,8 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertTrue(is_char('a'))
         self.assertTrue(is_char(TEST_ENTRY1.get_key()))
         self.assertFalse((is_char('$')))
-
+        self.assertFalse(is_char('Key.space'))
+        self.assertFalse(is_char('1'))
 
 
 if __name__ == '__main__':
