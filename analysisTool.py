@@ -32,7 +32,6 @@ class Date:
     """
     A date in a log file entry with a year, month, and day
     """
-
     def __init__(self, year: int, month: int, day: int):
         self._year = year
         self._month = month
@@ -71,7 +70,6 @@ class Time:
     """
     A time in a log file entry with hours, minutes, seconds, and milliseconds
     """
-
     def __init__(self, hr: int, mins: int, sec: int, ms: int):
         self._hr = hr
         self._mins = mins
@@ -132,7 +130,6 @@ class Entry:
     """
     An entry in a key log file with a date, time, and key press
     """
-
     def __init__(self, date: Date, time: Time, key: str):
         self._date = date
         self._time = time
@@ -155,7 +152,6 @@ class AnalysisTool:
     """
     tool used to analyze a key log file
     """
-
     def __init__(self):
         """
         EFFECTS: creates new AnalysisTool instance
@@ -169,7 +165,6 @@ class AnalysisTool:
         """
         EFFECTS: runs the analysis tool ui
         """
-
         print()
         print("Simple Key Logger - Analysis Tool")
         print("=================================\n")
@@ -209,7 +204,6 @@ class AnalysisTool:
         EFFECTS: builds new list of entries from log file,
                 prints error message if no entries added
         """
-
         print("Building new entry list...\n")
         print(str(len(self.entries)) + " entries removed")
         self.entries = []
@@ -229,7 +223,6 @@ class AnalysisTool:
         """
         EFFECTS: prints full log file
         """
-
         try:
             with open(self.log_path, 'r') as f:
                 print("Printing full log...\n")
@@ -241,7 +234,6 @@ class AnalysisTool:
         """
         EFFECTS: displays the search options menu and handles choice
         """
-
         print("       Search Options")
         print("===============================")
         print("To search by pattern type 'p'")
@@ -260,7 +252,6 @@ class AnalysisTool:
         EFFECTS: takes user input and searches entry list for given pattern
                  prints log entry for each complete pattern found and total number of times found
         """
-
         index = 0
         times_found = 0
         print("Pattern to search for:")
@@ -283,7 +274,6 @@ class AnalysisTool:
         """
         EFFECTS: prints each log entry found in given date range
         """
-
         print("Dates in entry list:")
         self.print_dates()
         print()
@@ -314,7 +304,6 @@ class AnalysisTool:
         """
         EFFECTS: prints each log entry found in given date range and time range
         """
-
         print("Dates in entry list:")
         self.print_dates()
         print()
@@ -350,7 +339,6 @@ class AnalysisTool:
         """
         EFFECTS: prints key press from each entry in entries list on a separate line
         """
-
         for entry in self.entries:
             print(entry.get_key())
 
@@ -358,7 +346,6 @@ class AnalysisTool:
         """
         EFFECTS: returns list of dates in which there are entries in the list
         """
-
         dates = []
         for entry in self.entries:
             if not is_in(entry.get_date(), dates):
@@ -369,7 +356,6 @@ class AnalysisTool:
         """
         EFFECTS: prints each date that there are entries for on a separate line
         """
-
         for date in self.get_dates():
             print(date)
 
