@@ -56,6 +56,9 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertFalse(is_char('Key.space'))
         self.assertFalse(is_char('1'))
 
+    def test_check_for_pattern(self):
+        self.assertTrue(check_for_pattern("a", [TEST_ENTRY1]))
+
 
 if __name__ == '__main__':
     unittest.main()
