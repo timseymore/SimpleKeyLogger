@@ -2,8 +2,16 @@ import unittest
 from analysisTool import *
 
 TEST_DATE1 = Date(1234, 1, 2)
+TEST_DATE2 = Date(1234, 1, 3)
+TEST_DATE3 = Date(1234, 2, 2)
+TEST_DATE4 = Date(1235, 1, 2)
 TEST_TIME1 = Time(12, 30, 59, 123)
+TEST_TIME2 = Time(12, 30, 59, 500)
+TEST_TIME3 = Time(12, 31, 00, 123)
+TEST_TIME4 = Time(1, 5, 1, 5)
 TEST_ENTRY1 = Entry(TEST_DATE1, TEST_TIME1, "'a'")
+TEST_ENTRY2 = Entry(TEST_DATE1, TEST_TIME1, "'b'")
+TEST_ENTRY3 = Entry(TEST_DATE1, TEST_TIME1, "Key.space")
 
 
 class TestHelperFunctions(unittest.TestCase):
@@ -57,7 +65,10 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertFalse(is_char('1'))
 
     def test_check_for_pattern(self):
+        ts1 = [TEST_ENTRY1, TEST_ENTRY2, TEST_ENTRY3]
         self.assertTrue(check_for_pattern("a", [TEST_ENTRY1]))
+        self.assertTrue(check_for_pattern("ab", ts1))
+        self.assertFalse(check_for_pattern("abe", ts1))
 
 
 if __name__ == '__main__':
