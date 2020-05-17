@@ -425,12 +425,14 @@ def check_for_pattern(pattern: str, entries: list) -> bool:
     returns true if complete pattern is found starting at beginning of entries list.
     """
     index = 0
-    for char in pattern:
-        entry_key = entries[index].get_key()[1]
-        if (char != entry_key) or not is_char(entry_key):
-            return False
-        index += 1
-    return True
+    if entries:
+        for char in pattern:
+            entry_key = entries[index].get_key()[1]
+            if (char != entry_key) or not is_char(entry_key):
+                return False
+            index += 1
+        return True
+    return False
 
 
 if __name__ == "__main__":
