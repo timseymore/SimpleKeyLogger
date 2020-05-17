@@ -68,7 +68,7 @@ class TestHelperFunctions(unittest.TestCase):
         ts1 = [TEST_ENTRY1, TEST_ENTRY2, TEST_ENTRY3]
         self.assertTrue(check_for_pattern("a", [TEST_ENTRY1]))
         self.assertTrue(check_for_pattern("ab", ts1))
-        self.assertFalse(check_for_pattern("abe", ts1))
+        self.assertFalse(check_for_pattern("abe", ts1))  # fails
 
 
 if __name__ == '__main__':
