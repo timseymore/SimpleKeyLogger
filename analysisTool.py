@@ -427,8 +427,8 @@ def check_for_pattern(pattern: str, entries: list) -> bool:
     index = 0
     if entries:
         for char in pattern:
-            entry_key = entries[index].get_key()[1]
-            if (char != entry_key) or not is_char(entry_key):
+            entry_key = entries[index].get_key()
+            if (char != entry_key[1]) or not is_char(entry_key):
                 return False
             index += 1
         return True
