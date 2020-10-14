@@ -70,7 +70,7 @@ class TestHelperFunctions(unittest.TestCase):
         self.assertFalse(check_for_pattern("a", []))
         self.assertFalse(check_for_pattern("b", ts1))
         self.assertTrue(check_for_pattern("ab", ts1))
-        self.assertFalse(check_for_pattern("abe", ts1))  # fails
+        self.assertFalse(check_for_pattern("abe", ts1))
 
 
 if __name__ == '__main__':

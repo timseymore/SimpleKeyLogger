@@ -29,9 +29,6 @@ SOFTWARE.
 
 
 class Date:
-    """
-    A date in a log file entry with a year, month, and day
-    """
     def __init__(self, year: int, month: int, day: int):
         self._year = year
         self._month = month
@@ -67,9 +64,6 @@ class Date:
 
 
 class Time:
-    """
-    A time in a log file entry with hours, minutes, seconds, and milliseconds
-    """
     def __init__(self, hr: int, mins: int, sec: int, ms: int):
         self._hr = hr
         self._mins = mins
@@ -127,9 +121,6 @@ class Time:
 
 
 class Entry:
-    """
-    An entry in a key log file with a date, time, and key press
-    """
     def __init__(self, date: Date, time: Time, key: str):
         self._date = date
         self._time = time
@@ -149,22 +140,13 @@ class Entry:
 
 
 class AnalysisTool:
-    """
-    tool used to analyze a key log file
-    """
     def __init__(self):
-        """
-        EFFECTS: creates new AnalysisTool instance
-        """
         with open("path.txt", 'r') as f:
             log_path = f.read()
         self.log_path = log_path[2:-1]
         self.entries = []
 
     def main(self):
-        """
-        EFFECTS: runs the analysis tool ui
-        """
         print()
         print("Simple Key Logger - Analysis Tool")
         print("=================================\n")
@@ -199,11 +181,6 @@ class AnalysisTool:
         print("exiting program...")
 
     def build_entry_list(self):
-        """
-        MODIFIES: self
-        EFFECTS: builds new list of entries from log file,
-                prints error message if no entries added
-        """
         print("Building new entry list...\n")
         print(str(len(self.entries)) + " entries removed")
         self.entries = []
@@ -220,9 +197,6 @@ class AnalysisTool:
             print(str(len(self.entries)) + " entries added")
 
     def view_log(self):
-        """
-        EFFECTS: prints full log file
-        """
         try:
             with open(self.log_path, 'r') as f:
                 print("Printing full log...\n")
@@ -231,9 +205,6 @@ class AnalysisTool:
             print("ERROR: FileNotFound")
 
     def search_entries(self):
-        """
-        EFFECTS: displays the search options menu and handles choice
-        """
         print("       Search Options")
         print("===============================")
         print("To search by pattern type 'p'")
@@ -248,10 +219,6 @@ class AnalysisTool:
             self.search_dates_by_time_range()
 
     def search_by_pattern(self):
-        """
-        EFFECTS: takes user input and searches entry list for given pattern
-                 prints log entry for each complete pattern found and total number of times found
-        """
         index = 0
         times_found = 0
         print("Pattern to search for:")
@@ -271,9 +238,6 @@ class AnalysisTool:
                 print("Pattern was found a total of " + str(times_found) + " times")
 
     def search_by_date(self):
-        """
-        EFFECTS: prints each log entry found in given date range
-        """
         print("Dates in entry list:")
         self.print_dates()
         print()
@@ -301,13 +265,9 @@ class AnalysisTool:
                 print(entry)
 
     def search_dates_by_time_range(self):
-        """
-        EFFECTS: prints each log entry found in given date range and time range
-        """
         print("Dates in entry list:")
         self.print_dates()
         print()
-        # Get user input for start and stop date
         print("Type the date to start: (yyyy-mm-dd)")
         start_date = make_date(get_input())
         if not is_in(start_date, self.get_dates()):
@@ -321,7 +281,6 @@ class AnalysisTool:
         if stop_date < start_date:
             print("ERROR: stop date falls before start date")
             return
-        # Get user input for start and stop time 
         print("Type time to start: (hh:mm:ss,mms)")
         start_time = make_time(get_input())
         print("Type time to stop: (hh:mm:ss,mms)")
@@ -330,22 +289,15 @@ class AnalysisTool:
             print("ERROR: stop time falls before start time")
             return
         print()
-        # Print selected entries to console
         for entry in self.entries:
             if stop_date >= entry.get_date() >= start_date and stop_time >= entry.get_time() >= start_time:
                 print(entry)
 
     def print_keys(self):
-        """
-        EFFECTS: prints key press from each entry in entries list on a separate line
-        """
         for entry in self.entries:
             print(entry.get_key())
 
     def get_dates(self) -> list:
-        """
-        EFFECTS: returns list of dates in which there are entries in the list
-        """
         dates = []
         for entry in self.entries:
             if not is_in(entry.get_date(), dates):
@@ -353,9 +305,6 @@ class AnalysisTool:
         return dates
 
     def print_dates(self):
-        """
-        EFFECTS: prints each date that there are entries for on a separate line
-        """
         for date in self.get_dates():
             print(date)
 
@@ -363,7 +312,6 @@ class AnalysisTool:
 # Helper Functions
 
 def get_input() -> str:
-    """ Get user input and return that value. """
     print()
     string = input('>>> ')
     print()
@@ -405,7 +353,6 @@ def make_entry(line: str) -> Entry:
 
 
 def is_in(el, lst: list) -> bool:
-    """ Returns True if an equal element is in list, False otherwise. """
     for entry in lst:
         if entry == el:
             return True
@@ -413,7 +360,6 @@ def is_in(el, lst: list) -> bool:
 
 
 def is_char(key: str) -> bool:
-    """ Returns true if key is an alphabetic character, false otherwise. """
     return not (is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
                 or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=', '$', '#', '@', '!', '^',
                                '&', '(', ')', '"'])
@@ -421,18 +367,23 @@ def is_char(key: str) -> bool:
 
 
 def check_for_pattern(pattern: str, entries: list) -> bool:
-    """ Checks each char in pattern against each entry in entries and
-    returns true if complete pattern is found starting at beginning of entries list.
-    """
-    index = 0
     if entries:
-        for char in pattern:
-            entry_key = entries[index].get_key()
-            if (char != entry_key[1]) or not is_char(entry_key):
-                return False
-            index += 1
-        return True
+        return check_pattern_match(pattern, entries)
     return False
+
+
+def check_pattern_match(p, e):
+    index = 0
+    for char in p:
+        entry_key = e[index].get_key()
+        if fail_pattern_match(char, entry_key):
+            return False
+        index += 1
+    return True
+
+
+def fail_pattern_match(c, k):
+    return c != k[1] or not is_char(k)
 
 
 if __name__ == "__main__":
