@@ -139,6 +139,12 @@ class Entry:
         return str(self._date) + " " + str(self._time) + ": " + self._key
 
 
+class Error:
+    def __init__(self, message="GenericError"):
+        self.message = message
+        print("ERROR: " + message)
+
+
 class AnalysisTool:
     def __init__(self):
         with open("path.txt", 'r') as f:
@@ -189,9 +195,9 @@ class AnalysisTool:
                 for line in f:
                     self.entries.append(make_entry(line))
         except FileNotFoundError:
-            print("ERROR: FileNotFound")
+            Error("FileNotFound")
         if len(self.entries) == 0:
-            print("Error: NoEntriesFound")
+            Error("NoEntriesFound")
             print("Verify correct file path and log file for contents")
         else:
             print(str(len(self.entries)) + " entries added")
@@ -202,7 +208,7 @@ class AnalysisTool:
                 print("Printing full log...\n")
                 print(f.read())
         except FileNotFoundError:
-            print("ERROR: FileNotFound")
+            Error("FileNotFound")
 
     def search_entries(self):
         print("       Search Options")
@@ -246,17 +252,17 @@ class AnalysisTool:
         start_date_str = get_input()
         start_date = make_date(start_date_str)
         if not is_in(start_date, self.get_dates()):
-            print("ERROR: start date not in entry list")
+            Error("start date not in entry list")
             return
             # Get user input for stop date
         print("Type the date to stop: (yyyy-mm-dd)")
         stop_date_str = get_input()
         stop_date = make_date(stop_date_str)
         if not is_in(stop_date, self.get_dates()):
-            print("ERROR: stop date not in entry list")
+            Error("stop date not in entry list")
             return
         if stop_date < start_date:
-            print("ERROR: stop date falls before start date")
+            Error("stop date falls before start date")
             return
         print()
         # Print selected entries 
@@ -271,31 +277,27 @@ class AnalysisTool:
         print("Type the date to start: (yyyy-mm-dd)")
         start_date = make_date(get_input())
         if not is_in(start_date, self.get_dates()):
-            print("ERROR: start date not in entry list")
+            Error("start date not in entry list")
             return
         print("Type the date to stop: (yyyy-mm-dd)")
         stop_date = make_date(get_input())
         if not is_in(stop_date, self.get_dates()):
-            print("ERROR: stop date not in entry list")
+            Error("stop date not in entry list")
             return
         if stop_date < start_date:
-            print("ERROR: stop date falls before start date")
+            Error("stop date falls before start date")
             return
         print("Type time to start: (hh:mm:ss,mms)")
         start_time = make_time(get_input())
         print("Type time to stop: (hh:mm:ss,mms)")
         stop_time = make_time(get_input())
         if stop_date == start_date and stop_time < start_time:
-            print("ERROR: stop time falls before start time")
+            Error("stop time falls before start time")
             return
         print()
         for entry in self.entries:
             if stop_date >= entry.get_date() >= start_date and stop_time >= entry.get_time() >= start_time:
                 print(entry)
-
-    def print_keys(self):
-        for entry in self.entries:
-            print(entry.get_key())
 
     def get_dates(self) -> list:
         dates = []
@@ -303,6 +305,10 @@ class AnalysisTool:
             if not is_in(entry.get_date(), dates):
                 dates.append(entry.get_date())
         return dates
+
+    def print_keys(self):
+        for entry in self.entries:
+            print(entry.get_key())
 
     def print_dates(self):
         for date in self.get_dates():
@@ -360,10 +366,15 @@ def is_in(el, lst: list) -> bool:
 
 
 def is_char(key: str) -> bool:
-    return not (is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
-                or is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '*', '-', '+', '=', '$', '#', '@', '!', '^',
-                               '&', '(', ')', '"'])
-                or key[0] == 'K')
+    return not (is_number(key) or is_symbol(key) or key[0] == 'K')
+
+
+def is_number(key: str) -> bool:
+    return is_in(key, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+
+
+def is_symbol(key: str) -> bool:
+    return is_in(key, [',', '.', '/', "'", ';', '`', '[', ']', '\\', '-', '=', '*', '+'])
 
 
 def check_for_pattern(pattern: str, entries: list) -> bool:
@@ -382,8 +393,8 @@ def check_pattern_match(p, e):
     return True
 
 
-def fail_pattern_match(c, k):
-    return c != k[1] or not is_char(k)
+def fail_pattern_match(char, k_str):
+    return char != k_str[1] or not is_char(k_str)
 
 
 if __name__ == "__main__":
