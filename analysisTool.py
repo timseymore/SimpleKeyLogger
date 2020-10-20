@@ -151,44 +151,53 @@ class AnalysisTool:
             log_path = f.read()
         self.log_path = log_path[2:-1]
         self.entries = []
+        self.is_running = False
 
     def main(self):
-        print()
-        print("Simple Key Logger - Analysis Tool")
-        print("=================================\n")
+        self.print_main_title()
         self.build_entry_list()
-        while True:
-            print()
-            print("               Options")
-            print("====================================\n")
-            print("To view complete log file type 'log'")
-            print("For keystrokes only view type 'keys'")
-            print("To view the dates saved in log file type 'dates'")
-            print("To search entry list type 'search'")
-            print("To build new entry list type 'build'")
-            print("To check file path type 'path'")
-            print("To quit type 'quit'")
-            option = get_input().casefold()
-            if option == 'quit':
-                break
-            elif option == 'path':
-                print(self.log_path + "\n")
-            elif option == 'log':
-                self.view_log()
-            elif option == 'keys':
-                self.print_keys()
-            elif option == 'dates':
-                self.print_dates()
-            elif option == 'search':
-                self.search_entries()
-            elif option == 'build':
-                self.build_entry_list()
-            print()
-        print("exiting program...")
+        self.is_running = True
+        while self.is_running:
+            self.print_main_options()
+            self.get_and_handle_input()
+
+    @staticmethod
+    def print_main_title():
+        print("\nSimple Key Logger - Analysis Tool")
+        print("=================================\n")
+
+    @staticmethod
+    def print_main_options():
+        print("\n               Options")
+        print("====================================\n")
+        print("To view complete log file type 'log'")
+        print("For keystrokes only view type 'keys'")
+        print("To view the dates saved in log file type 'dates'")
+        print("To search entry list type 'search'")
+        print("To build new entry list type 'build'")
+        print("To check file path type 'path'")
+        print("To quit type 'quit'")
+
+    def get_and_handle_input(self):
+        _option = get_input().casefold
+        if _option == 'quit':
+            self.is_running = False
+        elif _option == 'path':
+            print(self.log_path + "\n")
+        elif _option == 'log':
+            self.print_full_log()
+        elif _option == 'keys':
+            self.print_keys()
+        elif _option == 'dates':
+            self.print_dates()
+        elif _option == 'search':
+            self.search_entries()
+        elif _option == 'build':
+            self.build_entry_list()
 
     def build_entry_list(self):
         print("Building new entry list...\n")
-        print(str(len(self.entries)) + " entries removed")
+        print(str(len(self.entries)), "old entries removed")
         self.entries = []
         try:
             with open(self.log_path, 'r') as f:
@@ -198,11 +207,10 @@ class AnalysisTool:
             Error("FileNotFound")
         if len(self.entries) == 0:
             Error("NoEntriesFound")
-            print("Verify correct file path and log file for contents")
         else:
-            print(str(len(self.entries)) + " entries added")
+            print(str(len(self.entries)), "new entries added")
 
-    def view_log(self):
+    def print_full_log(self):
         try:
             with open(self.log_path, 'r') as f:
                 print("Printing full log...\n")
@@ -216,12 +224,12 @@ class AnalysisTool:
         print("To search by pattern type 'p'")
         print("To search by dates type 'd'")
         print("To search dates by time of day type 't'")
-        choice = get_input()
-        if choice == 'p':
+        _option = get_input().casefold
+        if _option == 'p':
             self.search_by_pattern()
-        elif choice == 'd':
+        elif _option == 'd':
             self.search_by_date()
-        elif choice == 't':
+        elif _option == 't':
             self.search_dates_by_time_range()
 
     def search_by_pattern(self):
@@ -254,7 +262,6 @@ class AnalysisTool:
         if not is_in(start_date, self.get_dates()):
             Error("start date not in entry list")
             return
-            # Get user input for stop date
         print("Type the date to stop: (yyyy-mm-dd)")
         stop_date_str = get_input()
         stop_date = make_date(stop_date_str)
@@ -265,7 +272,6 @@ class AnalysisTool:
             Error("stop date falls before start date")
             return
         print()
-        # Print selected entries 
         for entry in self.entries:
             if stop_date >= entry.get_date() >= start_date:
                 print(entry)
@@ -383,18 +389,18 @@ def check_for_pattern(pattern: str, entries: list) -> bool:
     return False
 
 
-def check_pattern_match(p, e):
+def check_pattern_match(_pattern, _entries):
     index = 0
-    for char in p:
-        entry_key = e[index].get_key()
+    for char in _pattern:
+        entry_key = _entries[index].get_key()
         if fail_pattern_match(char, entry_key):
             return False
         index += 1
     return True
 
 
-def fail_pattern_match(char, k_str):
-    return char != k_str[1] or not is_char(k_str)
+def fail_pattern_match(_char, _key):
+    return _char != _key[1] or not is_char(_key)
 
 
 if __name__ == "__main__":
