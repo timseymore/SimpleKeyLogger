@@ -255,7 +255,6 @@ class AnalysisTool:
         print("Dates in entry list:")
         self.print_dates()
         print()
-        # Get user input for start date
         print("Type the date to start: (yyyy-mm-dd)")
         start_date_str = get_input()
         start_date = make_date(start_date_str)
@@ -365,10 +364,7 @@ def make_entry(line: str) -> Entry:
 
 
 def is_in(el, lst: list) -> bool:
-    for entry in lst:
-        if entry == el:
-            return True
-    return False
+    return lst.__contains__(el)
 
 
 def is_char(key: str) -> bool:
@@ -384,7 +380,7 @@ def is_symbol(key: str) -> bool:
 
 
 def check_for_pattern(pattern: str, entries: list) -> bool:
-    if entries:
+    if len(entries) > 0:
         return check_pattern_match(pattern, entries)
     return False
 
@@ -392,8 +388,7 @@ def check_for_pattern(pattern: str, entries: list) -> bool:
 def check_pattern_match(_pattern, _entries):
     index = 0
     for char in _pattern:
-        entry_key = _entries[index].get_key()
-        if fail_pattern_match(char, entry_key):
+        if fail_pattern_match(char, _entries[index].get_key()):
             return False
         index += 1
     return True
