@@ -133,11 +133,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.analysisTool" />
       <item itemvalue="Python tests.Unittests for test.TestHelperFunctions" />
       <item itemvalue="Python tests.Unittests in test.py" />
       <item itemvalue="Python tests.Unittests for test.TestHelperFunctions.test_fail_pattern_match_char_not_match" />
       <item itemvalue="Python tests.Unittests for test.TestErrorClass" />
-      <item itemvalue="Python.analysisTool" />
     </list>
     <recent_temporary>
       <list>
