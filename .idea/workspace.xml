@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5c3525b0-819e-4862-b615-b33027cb99af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysisTool.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysisTool.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +23,6 @@
   <component name="ProjectId" id="1SMOy13RqjZzPNf9IyW4luE5CX0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -148,6 +148,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -166,31 +167,30 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1346" height="11" key="GridCell.Tab.0.bottom" timestamp="1603250964820">
+    <state width="1346" height="32" key="GridCell.Tab.0.bottom" timestamp="1603334802360">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1346" height="11" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603250964820" />
-    <state width="1346" height="11" key="GridCell.Tab.0.center" timestamp="1603250964820">
+    <state width="1346" height="32" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603334802360" />
+    <state width="1346" height="32" key="GridCell.Tab.0.center" timestamp="1603334802360">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1346" height="11" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603250964820" />
-    <state width="1346" height="11" key="GridCell.Tab.0.left" timestamp="1603250964820">
+    <state width="1346" height="32" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603334802360" />
+    <state width="1346" height="32" key="GridCell.Tab.0.left" timestamp="1603334802360">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1346" height="11" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603250964820" />
-    <state width="1346" height="11" key="GridCell.Tab.0.right" timestamp="1603250964820">
+    <state width="1346" height="32" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603334802360" />
+    <state width="1346" height="32" key="GridCell.Tab.0.right" timestamp="1603334802360">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1346" height="11" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603250964820" />
+    <state width="1346" height="32" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603334802360" />
     <state x="-11" y="0" key="SettingsEditor" timestamp="1602716320090">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
