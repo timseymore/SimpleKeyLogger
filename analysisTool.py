@@ -156,10 +156,7 @@ class AnalysisTool:
     def main(self):
         self.print_main_title()
         self.build_entry_list()
-        self.is_running = True
-        while self.is_running:
-            self.print_main_options()
-            self.get_and_handle_input()
+        self.run()
 
     @staticmethod
     def print_main_title():
@@ -178,6 +175,27 @@ class AnalysisTool:
         print("To check file path type 'path'")
         print("To quit type 'quit'")
 
+    def build_entry_list(self):
+        print("Building new entry list...\n")
+        print(str(len(self.entries)), "old entries removed")
+        self.entries = []
+        try:
+            with open(self.log_path, 'r') as f:
+                for line in f:
+                    self.entries.append(make_entry(line))
+        except FileNotFoundError:
+            Error("FileNotFound")
+        if len(self.entries) == 0:
+            Error("NoEntriesFound")
+        else:
+            print(str(len(self.entries)), "new entries added")
+
+    def run(self):
+        self.is_running = True
+        while self.is_running:
+            self.print_main_options()
+            self.get_and_handle_input()
+
     def get_and_handle_input(self):
         _option = get_input().casefold
         if _option == 'quit':
@@ -194,29 +212,6 @@ class AnalysisTool:
             self.search_entries()
         elif _option == 'build':
             self.build_entry_list()
-
-    def build_entry_list(self):
-        print("Building new entry list...\n")
-        print(str(len(self.entries)), "old entries removed")
-        self.entries = []
-        try:
-            with open(self.log_path, 'r') as f:
-                for line in f:
-                    self.entries.append(make_entry(line))
-        except FileNotFoundError:
-            Error("FileNotFound")
-        if len(self.entries) == 0:
-            Error("NoEntriesFound")
-        else:
-            print(str(len(self.entries)), "new entries added")
-
-    def print_full_log(self):
-        try:
-            with open(self.log_path, 'r') as f:
-                print("Printing full log...\n")
-                print(f.read())
-        except FileNotFoundError:
-            Error("FileNotFound")
 
     def search_entries(self):
         print("       Search Options")
@@ -318,6 +313,14 @@ class AnalysisTool:
     def print_dates(self):
         for date in self.get_dates():
             print(date)
+
+    def print_full_log(self):
+        try:
+            with open(self.log_path, 'r') as f:
+                print("Printing full log...\n")
+                print(f.read())
+        except FileNotFoundError:
+            Error("FileNotFound")
 
 
 # Helper Functions
