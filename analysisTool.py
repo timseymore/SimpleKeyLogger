@@ -154,26 +154,9 @@ class AnalysisTool:
         self.is_running = False
 
     def main(self):
-        self.print_main_title()
+        AnalysisToolDisplay.print_main_title()
         self.build_entry_list()
         self.run()
-
-    @staticmethod
-    def print_main_title():
-        print("\nSimple Key Logger - Analysis Tool")
-        print("=================================\n")
-
-    @staticmethod
-    def print_main_options():
-        print("\n               Options")
-        print("====================================\n")
-        print("To view complete log file type 'log'")
-        print("For keystrokes only view type 'keys'")
-        print("To view the dates saved in log file type 'dates'")
-        print("To search entry list type 'search'")
-        print("To build new entry list type 'build'")
-        print("To check file path type 'path'")
-        print("To quit type 'quit'")
 
     def build_entry_list(self):
         print("Building new entry list...\n")
@@ -185,7 +168,7 @@ class AnalysisTool:
                     self.entries.append(make_entry(line))
         except FileNotFoundError:
             Error("FileNotFound")
-        if len(self.entries) == 0:
+        if not self.entries:
             Error("NoEntriesFound")
         else:
             print(str(len(self.entries)), "new entries added")
@@ -193,7 +176,7 @@ class AnalysisTool:
     def run(self):
         self.is_running = True
         while self.is_running:
-            self.print_main_options()
+            AnalysisToolDisplay.print_main_options()
             self.get_and_handle_input()
 
     def get_and_handle_input(self):
@@ -214,11 +197,7 @@ class AnalysisTool:
             self.build_entry_list()
 
     def search_entries(self):
-        print("       Search Options")
-        print("===============================")
-        print("To search by pattern type 'p'")
-        print("To search by dates type 'd'")
-        print("To search dates by time of day type 't'")
+        AnalysisToolDisplay.print_search_options()
         _option = get_input().casefold
         if _option == 'p':
             self.search_by_pattern()
@@ -319,9 +298,35 @@ class AnalysisTool:
             Error("FileNotFound")
 
     def print_full_log_file(self):
-        with open(self.log_path, 'r') as f:
-            print("Printing full log...\n")
-            print(f.read())
+        print("Printing full log...\n")
+        print_file_contents(self.log_path)
+
+
+class AnalysisToolDisplay:
+    @staticmethod
+    def print_main_title():
+        print("\nSimple Key Logger - Analysis Tool")
+        print("=================================\n")
+
+    @staticmethod
+    def print_main_options():
+        print("\n               Options")
+        print("====================================\n")
+        print("To view complete log file type 'log'")
+        print("For keystrokes only view type 'keys'")
+        print("To view the dates saved in log file type 'dates'")
+        print("To search entry list type 'search'")
+        print("To build new entry list type 'build'")
+        print("To check file path type 'path'")
+        print("To quit type 'quit'")
+
+    @staticmethod
+    def print_search_options():
+        print("       Search Options")
+        print("===============================")
+        print("To search by pattern type 'p'")
+        print("To search by dates type 'd'")
+        print("To search dates by time of day type 't'")
 
 
 # Helper Functions
@@ -333,9 +338,14 @@ def get_input() -> str:
     return string
 
 
-def print_list(lst):
+def print_list(lst: list):
     for element in lst:
         print(element)
+
+
+def print_file_contents(file_path: str):
+    with open(file_path, 'r') as f:
+        print(f.read())
 
 
 def make_date(d_str: str) -> Date:
