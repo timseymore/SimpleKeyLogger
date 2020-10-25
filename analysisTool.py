@@ -203,7 +203,7 @@ class AnalysisTool:
         elif _option == 'path':
             print(self.log_path + "\n")
         elif _option == 'log':
-            self.print_full_log()
+            self.try_print_full_log()
         elif _option == 'keys':
             self.print_keys()
         elif _option == 'dates':
@@ -307,20 +307,21 @@ class AnalysisTool:
         return dates
 
     def print_keys(self):
-        for entry in self.entries:
-            print(entry.get_key())
+        print_list(self.entries)
 
     def print_dates(self):
-        for date in self.get_dates():
-            print(date)
+        print_list(self.get_dates())
 
-    def print_full_log(self):
+    def try_print_full_log(self):
         try:
-            with open(self.log_path, 'r') as f:
-                print("Printing full log...\n")
-                print(f.read())
+            self.print_full_log_file()
         except FileNotFoundError:
             Error("FileNotFound")
+
+    def print_full_log_file(self):
+        with open(self.log_path, 'r') as f:
+            print("Printing full log...\n")
+            print(f.read())
 
 
 # Helper Functions
@@ -330,6 +331,11 @@ def get_input() -> str:
     string = input('>>> ')
     print()
     return string
+
+
+def print_list(lst):
+    for element in lst:
+        print(element)
 
 
 def make_date(d_str: str) -> Date:

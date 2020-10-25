@@ -25,6 +25,14 @@ class TestErrorClass(unittest.TestCase):
         self.assertTrue(error.message == "TestErrorMessage")
 
 
+class TestAnalysisTool(unittest.TestCase):
+    def test_get_dates_no_entries(self):
+        tool = AnalysisTool()
+        tool.entries = []
+        dates = tool.get_dates()
+        self.assertTrue(dates == []);
+
+
 class TestHelperFunctions(unittest.TestCase):
 
     def test_make_date(self):
