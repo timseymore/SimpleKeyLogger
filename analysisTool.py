@@ -180,7 +180,7 @@ class AnalysisTool:
             self.get_and_handle_input()
 
     def get_and_handle_input(self):
-        _option = get_input().casefold
+        _option = get_input()
         if _option == 'quit':
             self.is_running = False
         elif _option == 'path':
@@ -198,7 +198,7 @@ class AnalysisTool:
 
     def search_entries(self):
         AnalysisToolDisplay.print_search_options()
-        _option = get_input().casefold
+        _option = get_input()
         if _option == 'p':
             self.search_by_pattern()
         elif _option == 'd':
