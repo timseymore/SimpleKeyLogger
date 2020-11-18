@@ -207,23 +207,41 @@ class AnalysisTool:
             self.search_dates_by_time_range()
 
     def search_by_pattern(self):
+        print("Pattern to search for:")
+        self.try_pattern_search(get_input())
+
+    def try_pattern_search(self, _pattern):
+        if len(_pattern) != 0:
+            self.do_pattern_search(_pattern)
+        else:
+            Error("PatternLengthError")
+
+    def do_pattern_search(self, _pattern):
         index = 0
         times_found = 0
-        print("Pattern to search for:")
-        pattern = get_input()
-        if len(pattern) != 0:
-            for entry in self.entries:
-                if is_char(entry.get_key()) and entry.get_key()[1] == pattern[0]:
-                    if check_for_pattern(pattern[1:], self.entries[(index + 1):]):
-                        times_found += 1
-                        print("Pattern found on " + str(entry.get_date()) + " at " + str(entry.get_time()) + '\n')
-                        for e in self.entries[index:index + len(pattern)]:
-                            print(e)
-                index += 1
-            if times_found == 0:
-                print("Pattern not found\n")
-            else:
-                print("Pattern was found a total of " + str(times_found) + " times")
+
+        for entry in self.entries:
+            _key = entry.get_key()
+            if is_char(_key) and _key[1] == _pattern[0]:
+                pattern_found = check_for_pattern(_pattern[1:], self.entries[(index + 1):])
+                if pattern_found:
+                    times_found += 1
+                    print("Pattern found on " + str(entry.get_date()) + " at " + str(entry.get_time()) + '\n')
+                    self.print_matched_pattern_in_entries(_pattern, index)
+            index += 1
+
+        self.print_pattern_match_result(times_found)
+
+    def print_matched_pattern_in_entries(self, _pattern, index):
+        for e in self.entries[index:index + len(_pattern)]:
+            print(e)
+
+    @staticmethod
+    def print_pattern_match_result(times_found):
+        if times_found == 0:
+            print("Pattern not found\n")
+        else:
+            print("Pattern was found a total of " + str(times_found) + " times")
 
     def search_by_date(self):
         print("Dates in entry list:")
